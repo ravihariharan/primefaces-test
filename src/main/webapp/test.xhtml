@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:head>
-        <title>PrimeFaces Test</title>
-    </h:head>
-    <h:body>
+<h:head>
+	<title>PrimeFaces Test</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h1>#{testView.testString}</h1>
 
-        <h1>#{testView.testString}</h1>
-
-        <h1>#{testViewCdi.testString}</h1>
-
-    </h:body>
+		<h1>#{testViewCdi.testString}</h1>
+		<br />
+		<p:commandButton id="button1" action="#{testView.showImage()}"
+			process="@this" update="form:dovView"></p:commandButton>
+		<p:panel id="dovView" header="Document Viewer">
+			<iframe src="#{testView.mediaId}" width="100%" height="500px"></iframe>
+		</p:panel>
+	</h:form>
+</h:body>
 </html>
